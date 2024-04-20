@@ -1,5 +1,9 @@
 import React from 'react'
 
+import Image from 'next/image'
+import logo from '../assets/images/logo-white.png'
+import profileDefault from '../assets/images/profile.png'
+
 const Navbar = () => {
   return (
     <nav className='bg-blue-700 border-b border-blue-500'>
@@ -20,7 +24,7 @@ const Navbar = () => {
                 className='block h-6 w-6'
                 fill='none'
                 viewBox='0 0 24 24'
-                // stroke-width="1.5"
+                strokeWidth='1.5'
                 stroke='currentColor'
                 aria-hidden='true'
               >
@@ -36,11 +40,7 @@ const Navbar = () => {
           <div className='flex flex-1 items-center justify-center md:items-stretch md:justify-start'>
             {/*Logo */}
             <a className='flex flex-shrink-0 items-center' href='/'>
-              <img
-                className='h-10 w-auto'
-                // src="images/logo-white.png"
-                alt='PropertyPulse'
-              />
+              <Image className='h-10 w-auto' src={logo} alt='PropertyPulse' />
 
               <span className='hidden md:block text-white text-2xl font-bold ml-2'>
                 PropertyPulse
@@ -120,11 +120,7 @@ const Navbar = () => {
                 >
                   <span className='absolute -inset-1.5'></span>
                   <span className='sr-only'>Open user menu</span>
-                  <img
-                    className='h-8 w-8 rounded-full'
-                    // src="images/profile.png"
-                    alt=''
-                  />
+                  <Image className='h-8 w-8 rounded-full' src={profileDefault} alt='' />
                 </button>
               </div>
 
@@ -141,7 +137,7 @@ const Navbar = () => {
                   href='/profile'
                   className='block px-4 py-2 text-sm text-gray-700'
                   role='menuitem'
-                  // tabindex="-1"
+                  tabIndex='-1'
                   id='user-menu-item-0'
                 >
                   Your Profile
@@ -150,7 +146,7 @@ const Navbar = () => {
                   href='/saved-properties'
                   className='block px-4 py-2 text-sm text-gray-700'
                   role='menuitem'
-                  // tabindex="-1"
+                  tabIndex='-1'
                   id='user-menu-item-2'
                 >
                   Saved Properties
@@ -159,7 +155,7 @@ const Navbar = () => {
                   href='#'
                   className='block px-4 py-2 text-sm text-gray-700'
                   role='menuitem'
-                  // tabindex="-1"
+                  tabIndex='-1'
                   id='user-menu-item-2'
                 >
                   Sign Out
