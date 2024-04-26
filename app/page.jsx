@@ -1,7 +1,13 @@
-export default function Home () {
+import Hero from '@/components/Hero'
+import InfoBoxes from '@/components/InfoBoxes'
+import Footer from '@/components/Footer'
+
+export default function Home() {
   return (
-    <main className="">
-      <h1>Hello</h1>
-    </main>
+    <>
+      <Hero />
+      <InfoBoxes />
+      <Footer />
+    </>
   )
 }
