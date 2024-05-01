@@ -7,6 +7,8 @@ import Property from '@/models/Property'
  * @param {Object} req - The request object.
  * @return {Promise<Response>} A promise that resolves to a Response object.
  */
+
+// GET /api/properties
 export const GET = async (req) => {
   try {
     await connectDB()
