@@ -58,7 +58,7 @@ const Navbar = () => {
           <div className='flex flex-1 items-center justify-center md:items-stretch md:justify-start'>
             {/*Logo */}
             <Link className='flex flex-shrink-0 items-center' href='/'>
-              <Image className='h-10 w-auto' src={logo} alt='PropertyPulse' />
+              <Image className='h-10 w-auto' src={logo} alt='PropertyPulse' priority={true} />
 
               <span className='hidden md:block text-white text-2xl font-bold ml-2'>
                 PropertyPulse
@@ -146,7 +146,12 @@ const Navbar = () => {
                   >
                     <span className='absolute -inset-1.5'></span>
                     <span className='sr-only'>Open user menu</span>
-                    <Image className='h-8 w-8 rounded-full' src={profileDefault} alt='' />
+                    <Image
+                      className='h-8 w-8 rounded-full'
+                      src={profileDefault}
+                      alt=''
+                      priority={true}
+                    />
                   </button>
                 </div>
 
