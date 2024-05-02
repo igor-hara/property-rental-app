@@ -12,6 +12,8 @@ import { FaGoogle } from 'react-icons/fa'
 const Navbar = () => {
   const { data: session } = useSession()
 
+  const userImage = session?.user?.image || profileDefault
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileProfileMenuOpen, setIsMobileProfileMenuOpen] = useState(false)
   const [providers, setProviders] = useState(false)
@@ -169,8 +171,10 @@ const Navbar = () => {
                     <span className='sr-only'>Open user menu</span>
                     <Image
                       className='h-8 w-8 rounded-full'
-                      src={profileDefault}
-                      alt=''
+                      src={userImage || logo}
+                      width={32}
+                      height={32}
+                      alt='user profile image'
                       priority={true}
                     />
                   </button>
