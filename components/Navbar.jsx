@@ -195,6 +195,7 @@ const Navbar = () => {
                     role='menuitem'
                     tabIndex='-1'
                     id='user-menu-item-0'
+                    onClick={() => setIsMobileProfileMenuOpen(false)}
                   >
                     Your Profile
                   </Link>
@@ -204,6 +205,7 @@ const Navbar = () => {
                     role='menuitem'
                     tabIndex='-1'
                     id='user-menu-item-2'
+                    onClick={() => setIsMobileProfileMenuOpen(false)}
                   >
                     Saved Properties
                   </Link>
@@ -232,12 +234,14 @@ const Navbar = () => {
           <Link
             href='/'
             className={`${pathname === '/' ? 'bg-black' : ''}  text-white block rounded-md px-3 py-2 text-base font-medium`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Home
           </Link>
           <Link
             href='/properties'
             className={`${pathname === '/properties' ? 'bg-black' : ''}  text-white block rounded-md px-3 py-2 text-base font-medium`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Properties
           </Link>
@@ -245,6 +249,7 @@ const Navbar = () => {
             <Link
               href='/properties/add'
               className={`${pathname === '/properties/add' ? 'bg-black' : ''}  text-white block rounded-md px-3 py-2 text-base font-medium`}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Add Property
             </Link>
