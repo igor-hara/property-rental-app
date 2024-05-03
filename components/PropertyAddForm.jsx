@@ -16,7 +16,7 @@ const PropertyAddForm = () => {
     beds: '3',
     baths: '2',
     square_feet: '1800',
-    amenities: ['Wifi'],
+    amenities: [],
     price: 0,
     rates: {
       weekly: '',
@@ -31,11 +31,71 @@ const PropertyAddForm = () => {
     images: [],
   })
 
-  const handleChange = (event) => {}
+  const handleChange = (e) => {
+    const { name, value } = e.target
 
-  const handleAmenitiesChange = (event) => {}
+    // check if the field is a nested properties
+    if (name.includes('.')) {
+      const [outerKey, innerKey] = name.split('.')
 
-  const handleImagesChange = (event) => {}
+      setFields((prevFields) => ({
+        ...prevFields,
+        [outerKey]: {
+          ...prevFields[outerKey],
+          [innerKey]: value,
+        },
+      }))
+      // non-nested field
+    } else {
+      setFields((prevFields) => ({
+        ...prevFields,
+        [name]: value,
+      }))
+    }
+  }
+
+  const handleAmenitiesChange = (e) => {
+    const { value, checked } = e.target
+
+    // clone the current array
+    const updatedAmenities = [...fields.amenities]
+
+    if (checked) {
+      // add value to array
+      updatedAmenities.push(value)
+    } else {
+      // remove value from array
+      const index = updatedAmenities.indexOf(value)
+
+      if (index !== -1) {
+        updatedAmenities.splice(index, 1)
+      }
+    }
+
+    // update state with updated array
+    setFields((prevFields) => ({
+      ...prevFields,
+      amenities: updatedAmenities,
+    }))
+  }
+
+  const handleImagesChange = (e) => {
+    const { files } = e.target
+
+    // clone images array
+    const updatedImages = [...fields.images]
+
+    // add new images/files to array
+    for (const image of files) {
+      updatedImages.push(image)
+    }
+
+    // update state with updated array
+    setFields((prevFileds) => ({
+      ...prevFileds,
+      images: updatedImages,
+    }))
+  }
 
   return (
     <form>
