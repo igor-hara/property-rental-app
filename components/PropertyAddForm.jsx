@@ -259,6 +259,8 @@ const PropertyAddForm = () => {
               name='amenities'
               value='Full Kitchen'
               className='mr-2'
+              checked={fields.amenities.includes('Full Kitchen')}
+              onChange={handleAmenitiesChange}
             />
             <label htmlFor='amenity_kitchen'>Full kitchen</label>
           </div>
@@ -479,6 +481,7 @@ const PropertyAddForm = () => {
           className='border rounded w-full py-2 px-3'
           placeholder='Name'
           value={fields.seller_info.name}
+          onChange={handleChange}
         />
       </div>
       <div className='mb-4'>
@@ -493,6 +496,7 @@ const PropertyAddForm = () => {
           placeholder='Email address'
           required
           value={fields.seller_info.email}
+          onChange={handleChange}
         />
       </div>
       <div className='mb-4'>
@@ -506,6 +510,7 @@ const PropertyAddForm = () => {
           className='border rounded w-full py-2 px-3'
           placeholder='Phone'
           value={fields.seller_info.phone}
+          onChange={handleChange}
         />
       </div>
 
@@ -520,6 +525,7 @@ const PropertyAddForm = () => {
           className='border rounded w-full py-2 px-3'
           accept='image/*'
           multiple
+          value={fields.images}
           onChange={handleImagesChange}
         />
       </div>
