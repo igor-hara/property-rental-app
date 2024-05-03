@@ -1,6 +1,8 @@
 import connectDB from '@/config/database'
 import Property from '@/models/Property'
 
+import { getSessionUser } from '@/utils/getSessionUser'
+
 /**
  * Asynchronous function that handles GET requests.
  *
@@ -25,6 +27,15 @@ export const GET = async (req) => {
 // POST /api/properties
 export const POST = async (req) => {
   try {
+    await connectDB()
+
+    // get user id
+    const sessionUser = await getSessionUser()
+    if (!sessionUser || !sessionUser.userId) {
+      return new Response('User ID is required', { status: 401 })
+    }
+    const { userId } = sessionUser
+
     // fetch form data
     const formData = await req.formData()
 
@@ -57,14 +68,20 @@ export const POST = async (req) => {
         email: formData.get('seller_info.email'),
         phone: formData.get('seller_info.phone'),
       },
-      images: images,
+      owner: userId,
+      // images: images,
     }
 
-    console.log('propertyData: ', propertyData)
+    // save to DB
+    const newProperty = new Property(propertyData)
+    await newProperty.save()
 
-    return new Response(JSON.stringify({ message: 'Property created successfully.' }), {
-      status: 200,
-    })
+    // redirect to this created property
+    return Response.redirect(`${process.env.NEXT_PUBLIC_URL}/properties/${newProperty._id}`)
+
+    //   return new Response(JSON.stringify({ message: 'Property created successfully.' }), {
+    //     status: 200,
+    //   })
   } catch (err) {
     console.error('Error creating property:', err)
     return new Response(err.message, { status: 500 })
