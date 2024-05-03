@@ -17,7 +17,6 @@ const PropertyAddForm = () => {
     baths: '2',
     square_feet: '1800',
     amenities: [],
-    price: 0,
     rates: {
       weekly: '',
       monthly: '2000',
@@ -98,7 +97,8 @@ const PropertyAddForm = () => {
   }
 
   return (
-    <form>
+    // encType is for uploading files i.e. images
+    <form method='POST' action='/api/properties' encType='multipart/form-data'>
       <h2 className='text-3xl text-center font-semibold mb-6'>Add Property</h2>
 
       <div className='mb-4'>
@@ -477,7 +477,7 @@ const PropertyAddForm = () => {
         <input
           type='text'
           id='seller_name'
-          name='seller_info.name.'
+          name='seller_info.name'
           className='border rounded w-full py-2 px-3'
           placeholder='Name'
           value={fields.seller_info.name}
@@ -525,7 +525,7 @@ const PropertyAddForm = () => {
           className='border rounded w-full py-2 px-3'
           accept='image/*'
           multiple
-          value={fields.images}
+          required
           onChange={handleImagesChange}
         />
       </div>
