@@ -16,10 +16,13 @@ const PropertyCard = ({ property }) => {
       return `$${rates?.nightly.toLocaleString()}/n`
     }
   }
+
+  console.log('images', images)
   return (
     <div className='rounded-xl shadow-md relative'>
       <Image
-        src={`/images/properties/${images[0]}`}
+        // src={`/images/properties/${images[0]}`}
+        src={`${images[0]}`}
         alt=''
         width={0}
         height={0}
