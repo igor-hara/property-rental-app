@@ -17,7 +17,7 @@ const PropertyCard = ({ property }) => {
     }
   }
 
-  console.log('images', images)
+  // console.log('images', images)
   return (
     <div className='rounded-xl shadow-md relative'>
       <Image
