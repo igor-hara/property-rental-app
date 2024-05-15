@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation'
 import { getProperty } from '@/utils/requests'
 import PropertyHeaderImage from '@/components/PropertyHeaderImage'
 import PropertyDetails from '@/components/PropertyDetails'
+import PropertyImages from '@/components/PropertyImages'
 
 import Link from 'next/link'
 import { FaArrowLeft, FaBookmark, FaShare } from 'react-icons/fa'
@@ -148,6 +149,7 @@ const PropertyPage = () => {
               </div>
             </div>
           </section>
+          <PropertyImages images={property.images} />
         </>
       )}
     </>
